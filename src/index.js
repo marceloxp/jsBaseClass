@@ -12,6 +12,12 @@ class jsBaseClass {
         this.getBrowser();
     }
 
+    async init() {
+        if (typeof this.handle === 'function') {
+            await this.handle();
+        }
+    }
+
     getBrowser() {
         const parser = new UAParser();
         this.info_browser = parser.getResult();
