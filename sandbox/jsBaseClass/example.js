@@ -4,8 +4,7 @@ class ClassExample extends JsBaseClass {
     }
 }
 
-
 (async () => {
-    const objExample = new ClassExample();
+    window.objExample = new ClassExample();
     await objExample.init();
 })();

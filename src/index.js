@@ -20,6 +20,7 @@ class JsBaseClass {
         this.console.setColor(__jsBaseClassColors.get());
         this.console.log('jsBaseClass initialized');
         this.cookies = __jsBaseClassCookies;
+        this.q = document.querySelectorAll.bind(document);
 
         this.getBrowser();
     }

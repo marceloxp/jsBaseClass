@@ -31,6 +31,6 @@ class ClassAxios extends JsBaseClass {
 
 // See more: // https://axios-http.com/docs/req_config
 (async () => {
-    const objAxions = new ClassAxios();
+    window.objAxios = new ClassAxios();
     await objAxions.init();
 })();
