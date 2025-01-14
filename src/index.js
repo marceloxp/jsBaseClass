@@ -8,6 +8,15 @@ class jsBaseClass {
         this.console.setColor(__jsBaseClassColors.get());
         this.console.log('jsBaseClass initialized');
         this.cookies = __jsBaseClassCookies;
+
+        this.getBrowser();
+    }
+
+    getBrowser() {
+        const parser = new UAParser();
+        this.info_browser = parser.getResult();
+        this.browser = this.info_browser.browser;
+        this.is = this.console.is;
     }
 
     trigger(name, args) {

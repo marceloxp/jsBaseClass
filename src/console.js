@@ -114,35 +114,43 @@ class jsBaseClassColorConsole {
         this.name = name;
         this.format = {};
         this.setColor('white');
+        this.getBrowser();
         this.is = {
             chrome: this.isChrome(),
             firefox: this.isFirefox(),
             safari: this.isSafari(),
             ie: this.isIE(),
-            ie9: this.isIE(9)
+            edge: this.isEdge(),
+            other: !this.isChrome() && !this.isFirefox() && !this.isSafari() && !this.isIE() && !this.isEdge(),
         };
         this.jsBaseClassColors = new jsBaseClassColors();
         this.setActive(true);
     }
 
+    getBrowser() {
+        const parser = new UAParser();
+        this.info_browser = parser.getResult();
+        this.browser = this.info_browser.browser;
+    }
+
     isChrome() {
-        return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        return this.browser.name === 'Chrome';
     }
 
     isFirefox() {
-        return typeof InstallTrigger !== 'undefined';
+        return this.browser.name === 'Firefox';
     }
 
     isSafari() {
-        return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        return this.browser.name === 'Safari';
     }
 
     isIE(version) {
-        const ua = navigator.userAgent;
-        if (version) {
-            return ua.indexOf(`MSIE ${version}`) > -1 || ua.indexOf(`Trident/${version}`) > -1;
-        }
-        return /MSIE|Trident/.test(ua);
+        return this.browser.name === 'IE';
+    }
+
+    isEdge() {
+        return this.browser.name === 'Edge';
     }
 
     setActive(isActive) {

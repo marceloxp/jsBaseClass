@@ -18,4 +18,4 @@ class myClass2 extends jsBaseClass {
         this.trigger('my-event-from-class-2', 'Hello World!');
     }
 }
-new myClass2();
+const myClass2Instance = new myClass2();
