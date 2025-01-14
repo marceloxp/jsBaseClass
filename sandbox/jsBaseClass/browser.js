@@ -1,8 +1,4 @@
 class ClassBrowser extends JsBaseClass {
-    constructor(silent = false) {
-        super(silent);
-    }
-
     async handle() {
         this.console.log('Browser', this.browser);
         this.console.log('Info Browser', this.info_browser);

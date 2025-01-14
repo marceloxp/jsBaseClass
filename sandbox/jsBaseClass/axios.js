@@ -1,8 +1,4 @@
 class ClassAxios extends JsBaseClass {
-    constructor(silent = false) {
-        super(silent);
-    }
-
     async handle() {
         await this.getData();
         await this.getNonExistsData();

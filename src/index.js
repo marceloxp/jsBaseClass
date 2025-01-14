@@ -1,10 +1,22 @@
 const __jsBaseClassColors = new JsBaseClassColors();
 const __jsBaseClassCookies = Cookies.noConflict();
+let __jsBaseClassSilent = false;
+
+if (document.querySelector('script[data-silent]')) {
+    const script_jsBaseClass = document.querySelector('script[data-silent]');
+    const src = script_jsBaseClass.getAttribute('src');
+    if (src && src.includes('jsBaseClass.min.js')) {
+        const silent = script_jsBaseClass.getAttribute('data-silent') || 'true';
+        if (typeof silent === 'string' && silent === 'true') {
+            __jsBaseClassSilent = true;
+        }
+    }
+}
 
 class JsBaseClass {
-    constructor(silent = true) {
-        this.silent = silent;
-        this.console = new JsBaseClassColorConsole(this.constructor.name, silent);
+    constructor() {
+        this.silent = __jsBaseClassSilent;
+        this.console = new JsBaseClassColorConsole(this.constructor.name, __jsBaseClassSilent);
         this.console.setColor(__jsBaseClassColors.get());
         this.console.log('jsBaseClass initialized');
         this.cookies = __jsBaseClassCookies;

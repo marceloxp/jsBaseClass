@@ -1,8 +1,4 @@
 class ClassTriggers1 extends JsBaseClass {
-    constructor(silent = false) {
-        super(silent);
-    }
-
     async handle() {
         const trigger_name_1 = 'my-event-from-class-1';
         this.on(trigger_name_1, (args) => {

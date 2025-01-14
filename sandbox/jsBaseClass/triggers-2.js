@@ -1,8 +1,4 @@
 class ClassTriggers2 extends JsBaseClass {
-    constructor(silent = false) {
-        super(silent);
-    }
-
     async handle() {
         this.trigger('my-event-from-class-2', 'Hello World!');
     }
