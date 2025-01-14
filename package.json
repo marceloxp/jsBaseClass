@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "console-minify": "./node_modules/.bin/terser src/console.js -o dist/console.min.js --compress",
-    "build": "./node_modules/.bin/terser src/libs/js.cookie.min.js src/libs/ua-parser.js src/console.js src/trigger.js src/index.js -o dist/jsBaseClass.min.js --compress"
+    "build": "./node_modules/.bin/terser src/libs/js.cookie.min.js src/libs/ua-parser.js src/libs/axios.min.js src/console.js src/trigger.js src/index.js -o dist/jsBaseClass.min.js --compress"
   },
   "keywords": [],
   "author": "",

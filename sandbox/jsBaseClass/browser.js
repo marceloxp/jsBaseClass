@@ -9,7 +9,6 @@ class ClassBrowser extends jsBaseClass {
     }
 }
 
-
 (async () => {
     const objBrowser = new ClassBrowser();
     await objBrowser.init();
