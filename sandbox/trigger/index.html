@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trigger Class Examples</title>
+    <script src="../../dist/console.min.js"></script>
+    <!-- <script src="../../src/console.js"></script> -->
+    <script src="../../src/trigger.js"></script>
+    <style>
+        /* Dark Mode */
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trigger Examples</h1>
+    <p>Abra o console do navegador (F12).</p>
+
+    <script>
+        jsBaseClassTrigger.on('my-event', (args) => {
+            const customConsole = new jsBaseClassColorConsole('CustomLogger', false);
+        customConsole.setActive(true); // Ativa o console com estilo
+
+            customConsole.log('👋 Evento disparado:', args);
+        });
+
+        jsBaseClassTrigger.trigger('my-event', 'Hello World!');
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsBaseClass</title>
+    <script src="../../dist/jsBaseClass.min.js"></script>
+    <style>
+        /* Dark Mode */
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>jsBaseClass Examples</h1>
+    <p>Abra o console do navegador (F12).</p>
+
+    <script>
+        class myClass1 extends jsBaseClass {
+            constructor(silent = false) {
+                super(silent);
+                this.init();
+            }
+
+            init() {
+                const trigger_name_1 = 'my-event-from-class-1';
+                this.on(trigger_name_1, (args) => {
+                    this.console.log(`Evento disparado: ${trigger_name_1}`, args.detail);
+                });
+
+                const trigger_name_2 = 'my-event-from-class-2';
+                this.on(trigger_name_2, (args) => {
+                    this.console.log(`Evento disparado: ${trigger_name_2}`, args.detail);
+                });
+
+                this.trigger('my-event-from-class-1', 'Hello World!');
+            }
+        }
+        new myClass1();
+
+        class myClass2 extends jsBaseClass {
+            constructor(silent = false) {
+                super(silent);
+                this.init();
+            }
+
+            init() {
+                const trigger_name_1 = 'my-event-from-class-1';
+                this.on(trigger_name_1, (args) => {
+                    this.console.log(`Evento disparado: ${trigger_name_1}`, args.detail);
+                });
+
+                const trigger_name_2 = 'my-event-from-class-2';
+                this.on(trigger_name_2, (args) => {
+                    this.console.log(`Evento disparado: ${trigger_name_2}`, args.detail);
+                });
+
+                this.trigger('my-event-from-class-2', 'Hello World!');
+            }
+        }
+        new myClass2();
+    </script>
+</body>
+</html>

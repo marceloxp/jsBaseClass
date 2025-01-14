@@ -108,8 +108,8 @@ class jsBaseClassColorUtils {
 }
 
 class jsBaseClassColorConsole {
-    constructor(name = 'Untitled') {
-        this.debug = true;
+    constructor(name = 'Untitled', silent = true) {
+        this.debug = !silent;
         this.version = '1.0.0';
         this.name = name;
         this.format = {};
@@ -122,7 +122,7 @@ class jsBaseClassColorConsole {
             ie9: this.isIE(9)
         };
         this.jsBaseClassColors = new jsBaseClassColors();
-        this.setActive(false);
+        this.setActive(true);
     }
 
     isChrome() {
