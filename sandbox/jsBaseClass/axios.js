@@ -1,4 +1,4 @@
-class ClassAxios extends jsBaseClass {
+class ClassAxios extends JsBaseClass {
     constructor(silent = false) {
         super(silent);
     }

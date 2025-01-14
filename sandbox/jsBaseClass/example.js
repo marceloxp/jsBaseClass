@@ -1,4 +1,4 @@
-class ClassExample extends jsBaseClass {
+class ClassExample extends JsBaseClass {
     constructor(silent = false) {
         super(silent);
     }

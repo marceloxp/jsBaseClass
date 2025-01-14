@@ -1,4 +1,4 @@
-class jsBaseClassColors {
+class JsBaseClassColors {
     constructor() {
         this.colors = [
             'purple', 'darkolivegreen', 'slategray', 'saddlebrown', 'coral', '#884c17',
@@ -58,7 +58,7 @@ class jsBaseClassColors {
     }
 }
 
-class jsBaseClassColorUtils {
+class JsBaseClassColorUtils {
     /**
      * Converte uma cor hexadecimal para um objeto RGB.
      * @param {string} hex - Cor em formato hexadecimal.
@@ -107,7 +107,7 @@ class jsBaseClassColorUtils {
     }
 }
 
-class jsBaseClassColorConsole {
+class JsBaseClassColorConsole {
     constructor(name = 'Untitled', silent = true) {
         this.debug = !silent;
         this.version = '1.0.0';
@@ -123,7 +123,7 @@ class jsBaseClassColorConsole {
             edge: this.isEdge(),
             other: !this.isChrome() && !this.isFirefox() && !this.isSafari() && !this.isIE() && !this.isEdge(),
         };
-        this.jsBaseClassColors = new jsBaseClassColors();
+        this.jsBaseClassColors = new JsBaseClassColors();
         this.setActive(true);
     }
 
@@ -159,12 +159,12 @@ class jsBaseClassColorConsole {
     }
 
     setColor(color) {
-        const hexColor = jsBaseClassColors.colourNameToHex(color);
-        const rgbColor = jsBaseClassColorUtils.hexToRgb(hexColor);
+        const hexColor = JsBaseClassColors.colourNameToHex(color);
+        const rgbColor = JsBaseClassColorUtils.hexToRgb(hexColor);
 
         if (rgbColor) {
             this.format.background = hexColor;
-            this.format.color = jsBaseClassColorUtils.invertRgb(rgbColor);
+            this.format.color = JsBaseClassColorUtils.invertRgb(rgbColor);
         } else {
             console.error('Invalid color provided:', color);
         }
@@ -241,15 +241,15 @@ class jsBaseClassColorConsole {
 }
 
 // Exemplo de uso:
-// const myColors = new jsBaseClassColors();
+// const myColors = new JsBaseClassColors();
 // console.log(myColors.get()); // Retorna a próxima cor da lista
-// console.log(jsBaseClassColors.colourNameToHex('tomato')); // Converte 'tomato' para hexadecimal
+// console.log(JsBaseClassColors.colourNameToHex('tomato')); // Converte 'tomato' para hexadecimal
 
-// console.log(jsBaseClassColorUtils.hexToRgb('#FF5733')); // { r: 255, g: 87, b: 51 }
-// console.log(jsBaseClassColorUtils.invertRgb({ r: 205, g: 205, b: 205 })); // '#000000'
-// console.log(jsBaseClassColorUtils.invertHex('#FF5733')); // '#00A8CC'
+// console.log(JsBaseClassColorUtils.hexToRgb('#FF5733')); // { r: 255, g: 87, b: 51 }
+// console.log(JsBaseClassColorUtils.invertRgb({ r: 205, g: 205, b: 205 })); // '#000000'
+// console.log(JsBaseClassColorUtils.invertHex('#FF5733')); // '#00A8CC'
 
-// const consoleLogger = new jsBaseClassColorConsole('MyApp');
+// const consoleLogger = new JsBaseClassColorConsole('MyApp');
 // consoleLogger.setColor('lightseagreen');
 // consoleLogger.log('This is a log message');
 // consoleLogger.info('This is an info message');

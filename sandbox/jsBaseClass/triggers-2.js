@@ -1,4 +1,4 @@
-class ClassTriggers2 extends jsBaseClass {
+class ClassTriggers2 extends JsBaseClass {
     constructor(silent = false) {
         super(silent);
     }

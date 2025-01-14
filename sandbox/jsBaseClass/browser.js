@@ -1,4 +1,4 @@
-class ClassBrowser extends jsBaseClass {
+class ClassBrowser extends JsBaseClass {
     constructor(silent = false) {
         super(silent);
     }

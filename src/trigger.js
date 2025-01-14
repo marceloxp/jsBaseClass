@@ -1,4 +1,4 @@
-class jsBaseClassTrigger {
+class JsBaseClassTrigger {
     static trigger(name, args) {
         const event = new CustomEvent(name, { detail: args });
         document.dispatchEvent(event);
