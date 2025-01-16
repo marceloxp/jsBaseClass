@@ -3,7 +3,7 @@
         {
             "match": "\\.*/src/.*.js",
             "isAsync": true,
-            "cmd": "cd ${workspaceRoot} && npm run build",
+            "cmd": "cd ${workspaceRoot} && gulp",
             "event": "onFileChange"
         }
     ]

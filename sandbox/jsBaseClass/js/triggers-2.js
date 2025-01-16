@@ -4,7 +4,5 @@ class ClassTriggers2 extends JsBaseClass {
     }
 }
 
-(async () => {
-    window.objTriggers2 = new ClassTriggers2();
-    await objTriggers2.init();
-})();
+window.objTriggers2 = new ClassTriggers2();
+objTriggers2.init();

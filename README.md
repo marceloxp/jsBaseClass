@@ -33,9 +33,7 @@ Include the library in your project using a script tag:
 <script src="path/to/jsBaseClass.min.js" data-silent="true"></script>
 ```
 
-## Usage
-
-### 1. Extending JsBaseClass
+## Extending JsBaseClass
 
 To use `JsBaseClass`, extend it in your own class and implement the `handle` method:
 
@@ -47,11 +45,65 @@ class MyApp extends JsBaseClass {
     }
 }
 
-const app = new MyApp();
-app.init();
+window.myApp = new MyApp();
+myApp.init();
 ```
 
-### 2. Custom Console Logging
+## Axios Integration
+
+The **JsBaseClass** library integrates seamlessly with **Axios**, a popular HTTP client for making requests. Below is an example of how to use Axios within a class that extends `JsBaseClass`.
+
+#### Example: Making HTTP Requests
+
+```javascript
+class ClassAxios extends JsBaseClass {
+    async handle() {
+        await this.getData();          // Fetch data from a valid API
+        await this.getNonExistsData(); // Attempt to fetch data from a non-existent API
+    }
+
+    async getData() {
+        try {
+            this.console.info(`1️⃣ Before Get Data`);
+            const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+            this.console.log(`✅ Get Data`, response.data);
+        } catch (error) {
+            this.console.log(`🚨 ${error.message}`, error);
+        } finally {
+            this.console.log(`2️⃣ After Get Data`);
+        }
+    }
+
+    async getNonExistsData() {
+        try {
+            this.console.info(`1️⃣ Before Get Non Exists Data`);
+            const response = await axios.get('https://not-exists/json/1');
+            this.console.log(response.data);
+        } catch (error) {
+            this.console.log(`🚨 ${error.message}`, error);
+        } finally {
+            this.console.log(`2️⃣ After Get Non Exists Data`);
+        }
+    }
+}
+
+// Initialize the Axios example
+window.objAxios = new ClassAxios();
+await objAxios.init();
+```
+
+### How It Works:
+- **getData()**: Fetches data from a valid API (`https://jsonplaceholder.typicode.com/todos/1`) and logs the response.
+- **getNonExistsData()**: Attempts to fetch data from a non-existent API (`https://not-exists/json/1`) to demonstrate error handling.
+
+### Usage:
+1. Extend `JsBaseClass` to create your own class.
+2. Use `axios` to make HTTP requests within the `handle` method or other custom methods.
+3. Leverage `this.console` for structured logging and debugging.
+
+For more details on Axios, refer to the official documentation: [Axios Documentation](https://axios-http.com/docs/intro).
+
+## Custom Console Logging
 
 The `JsBaseClass` provides a built-in `console` object for logging. You can customize the log colors and styles:
 
@@ -79,7 +131,7 @@ const app = new MyApp();
 app.init();
 ```
 
-### 3. Event Handling
+## Event Handling
 
 Use the `trigger` and `on` methods to handle custom events. In this example, one class listens to an event, and another class triggers it:
 
@@ -110,7 +162,7 @@ const trigger = new EventTrigger();
 trigger.init();
 ```
 
-### 4. Browser Detection
+## Browser Detection
 
 The `JsBaseClass` provides browser detection capabilities:
 
@@ -168,8 +220,8 @@ Here’s a basic boilerplate to get started with **JsBaseClass**:
             }
         }
 
-        const app = new MyApp();
-        app.init();
+        window.myApp = new MyApp();
+        myApp.init();
     </script>
 </body>
 </html>

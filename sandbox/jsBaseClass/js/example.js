@@ -1,10 +1,8 @@
 class ClassExample extends JsBaseClass {
     async handle() {
-
+        // your code here
     }
 }
 
-(async () => {
-    window.objExample = new ClassExample();
-    await objExample.init();
-})();
+window.objExample = new ClassExample();
+objExample.init();
