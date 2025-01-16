@@ -180,6 +180,110 @@ const app = new MyApp();
 app.init();
 ```
 
+## Cookies
+
+The **JsBaseClass** library provides a simple way to manage cookies using the **js-cookie** library. Below is an example of how to set, get, and remove cookies, including advanced options like `expires` and `domain`.
+
+### Example: Managing Cookies
+
+```javascript
+class ClassCookies extends JsBaseClass {
+    async handle() {
+        // Set a cookie with an expiration date (7 days from now)
+        this.setCookie('username', 'MarceloXP', { expires: 7 });
+        this.console.log('Username cookie set with expiration.');
+
+        // Set a cookie with a specific domain and path
+        this.setCookie('preferences', 'dark_mode', { domain: 'example.com', path: '/settings' });
+        this.console.log('Preferences cookie set with domain and path.');
+
+        // Get the value of a cookie
+        const username = this.getCookie('username');
+        this.console.log('Username cookie:', username);
+
+        const preferences = this.getCookie('preferences');
+        this.console.log('Preferences cookie:', preferences);
+
+        // Remove a cookie
+        this.removeCookie('username');
+        this.console.log('Username cookie removed.');
+
+        // Remove a cookie with domain and path
+        this.removeCookie('preferences', { domain: 'example.com', path: '/settings' });
+        this.console.log('Preferences cookie removed.');
+
+        // Check if the cookies were removed
+        const removedUsername = this.getCookie('username');
+        this.console.log('Username cookie after removal:', removedUsername);
+
+        const removedPreferences = this.getCookie('preferences');
+        this.console.log('Preferences cookie after removal:', removedPreferences);
+    }
+
+    setCookie(name, value, options = {}) {
+        this.cookies.set(name, value, options);
+        this.console.log(`🍪 Cookie set: ${name} = ${value}`, options);
+    }
+
+    getCookie(name) {
+        const value = this.cookies.get(name);
+        this.console.log(`🍪 Cookie get: ${name} = ${value}`);
+        return value;
+    }
+
+    removeCookie(name, options = {}) {
+        this.cookies.remove(name, options);
+        this.console.log(`🍪 Cookie removed: ${name}`, options);
+    }
+}
+
+// Initialize the cookies example
+window.objCookies = new ClassCookies();
+objCookies.init();
+```
+
+### Key Features:
+1. **Set a Cookie**:
+   - Use `this.setCookie(name, value, options)` to set a cookie with a name, value, and optional settings like `expires`, `domain`, and `path`.
+   - Example: `this.setCookie('username', 'MarceloXP', { expires: 7 })` sets a cookie that expires in 7 days.
+   - Example: `this.setCookie('preferences', 'dark_mode', { domain: 'example.com', path: '/settings' })` sets a cookie for a specific domain and path.
+
+2. **Get a Cookie**:
+   - Use `this.getCookie(name)` to retrieve the value of a cookie.
+   - Example: `this.getCookie('username')`.
+
+3. **Remove a Cookie**:
+   - Use `this.removeCookie(name, options)` to delete a cookie. You can specify `domain` and `path` if needed.
+   - Example: `this.removeCookie('username')`.
+   - Example: `this.removeCookie('preferences', { domain: 'example.com', path: '/settings' })`.
+
+### Example Output in Console:
+```plaintext
+🍪 Cookie set: username = MarceloXP { expires: 7 }
+🍪 Cookie set: preferences = dark_mode { domain: 'example.com', path: '/settings' }
+🍪 Cookie get: username = MarceloXP
+🍪 Cookie get: preferences = dark_mode
+🍪 Cookie removed: username {}
+🍪 Cookie removed: preferences { domain: 'example.com', path: '/settings' }
+🍪 Cookie get: username = undefined
+🍪 Cookie get: preferences = undefined
+```
+
+### How to Use:
+1. Extend `JsBaseClass` to create your own class.
+2. Use `this.setCookie`, `this.getCookie`, and `this.removeCookie` to manage cookies.
+3. Use options like `expires`, `domain`, and `path` for advanced cookie management.
+4. Leverage `this.console` for structured logging and debugging.
+
+For more details on cookie options, refer to the [js-cookie documentation](https://github.com/js-cookie/js-cookie#readme).
+
+---
+
+### Where to Use:
+- This feature is ideal for managing user preferences, session data, or any other information that needs to persist across page reloads.
+- Use `expires` to set a expiration date for the cookie.
+- Use `domain` and `path` to control the scope of the cookie.
+
 ## Boilerplate for Practical Use
 
 Here’s a basic boilerplate to get started with **JsBaseClass**:
