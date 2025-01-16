@@ -1,6 +1,7 @@
 const __jsBaseClassColors = new JsBaseClassColors();
 const __jsBaseClassCookies = Cookies.noConflict();
 let __jsBaseClassSilent = false;
+let __jsBaseClassjQueryIsChecked = false;
 
 if (document.querySelector('script[data-silent]')) {
     const script_jsBaseClass = document.querySelector('script[data-silent]');
@@ -25,6 +26,10 @@ class JsBaseClass {
 
         this.getBrowser();
         this._onDomContentLoaded();
+        if (!__jsBaseClassjQueryIsChecked) {
+            __jsBaseClassjQueryIsChecked = true;
+            this.checkJquery();
+        }
     }
 
     async init() {
@@ -71,5 +76,13 @@ class JsBaseClass {
                 this.onDomContentLoaded();
             }
         });
+    }
+
+    checkJquery() {
+        if (typeof $ === 'function') {
+            if ($.fn && $.fn.jquery) {
+                this.console.log(`jQuery version: ${$.fn.jquery}`);
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 # JsBaseClass
 
-![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/master/images/console.png)
+![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/console.png)
 
 **JsBaseClass** is a versatile JavaScript base class designed to simplify common tasks such as logging, event handling, and browser detection. It provides a foundation for building modular and reusable components in your JavaScript applications. The class is lightweight, extensible, and easy to integrate into any project.
 
