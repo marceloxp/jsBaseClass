@@ -1,5 +1,7 @@
 # JsBaseClass
 
+![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/master/images/console.png)
+
 **JsBaseClass** is a versatile JavaScript base class designed to simplify common tasks such as logging, event handling, and browser detection. It provides a foundation for building modular and reusable components in your JavaScript applications. The class is lightweight, extensible, and easy to integrate into any project.
 
 ## Features
@@ -41,7 +43,12 @@ To use `JsBaseClass`, extend it in your own class and implement the `handle` met
 class MyApp extends JsBaseClass {
     async handle() {
         // Your initialization code here
-        this.console.log('MyApp is running!');
+        this.console.log('Your code starts here...');
+    }
+
+    async onDomContentLoaded() {
+        // On DOM content loaded (page load)
+        this.console.log('DOM content loaded');
     }
 }
 
@@ -182,7 +189,7 @@ app.init();
 
 ## Cookies
 
-The **JsBaseClass** library provides a simple way to manage cookies using the **js-cookie** library. Below is an example of how to set, get, and remove cookies, including advanced options like `expires` and `domain`.
+The **JsBaseClass** library provides built-in methods to manage cookies using the **js-cookie** library. Below is an example of how to set, get, and remove cookies, including advanced options like `expires` and `domain`.
 
 ### Example: Managing Cookies
 
@@ -218,22 +225,6 @@ class ClassCookies extends JsBaseClass {
 
         const removedPreferences = this.getCookie('preferences');
         this.console.log('Preferences cookie after removal:', removedPreferences);
-    }
-
-    setCookie(name, value, options = {}) {
-        this.cookies.set(name, value, options);
-        this.console.log(`🍪 Cookie set: ${name} = ${value}`, options);
-    }
-
-    getCookie(name) {
-        const value = this.cookies.get(name);
-        this.console.log(`🍪 Cookie get: ${name} = ${value}`);
-        return value;
-    }
-
-    removeCookie(name, options = {}) {
-        this.cookies.remove(name, options);
-        this.console.log(`🍪 Cookie removed: ${name}`, options);
     }
 }
 
@@ -271,7 +262,7 @@ objCookies.init();
 
 ### How to Use:
 1. Extend `JsBaseClass` to create your own class.
-2. Use `this.setCookie`, `this.getCookie`, and `this.removeCookie` to manage cookies.
+2. Use the built-in methods `this.setCookie`, `this.getCookie`, and `this.removeCookie` to manage cookies.
 3. Use options like `expires`, `domain`, and `path` for advanced cookie management.
 4. Leverage `this.console` for structured logging and debugging.
 
@@ -281,7 +272,7 @@ For more details on cookie options, refer to the [js-cookie documentation](https
 
 ### Where to Use:
 - This feature is ideal for managing user preferences, session data, or any other information that needs to persist across page reloads.
-- Use `expires` to set a expiration date for the cookie.
+- Use `expires` to set an expiration date for the cookie.
 - Use `domain` and `path` to control the scope of the cookie.
 
 ## Boilerplate for Practical Use

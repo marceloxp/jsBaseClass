@@ -3,3 +3,6 @@ node_modules/
 gulpfile.js
 .gitignore
 .repomixignore
+repomix-output.txt
+repomix.config.json
+.vscode

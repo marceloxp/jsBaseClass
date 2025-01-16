@@ -1,6 +1,10 @@
 class ClassExample extends JsBaseClass {
     async handle() {
-        // your code here
+        this.console.log('Your code starts here...');
+    }
+
+    async onDomContentLoaded() {
+        this.console.log('DOM content loaded');
     }
 }
 

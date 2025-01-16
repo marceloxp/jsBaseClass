@@ -1,6 +1,6 @@
 {
   "name": "jsbaseclass",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight JavaScript base class for logging, event handling, and browser detection. Designed to simplify common tasks in frontend development.",
   "main": "index.js",
   "keywords": [
