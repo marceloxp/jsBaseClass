@@ -1,15 +1,37 @@
 {
   "name": "jsbaseclass",
   "version": "1.0.0",
-  "description": "",
+  "description": "A lightweight JavaScript base class for logging, event handling, and browser detection. Designed to simplify common tasks in frontend development.",
   "main": "index.js",
-  "scripts": {
-    "build": "./node_modules/.bin/terser src/libs/js.cookie.min.js src/libs/ua-parser.js src/libs/axios.min.js src/console.js src/trigger.js src/index.js -o dist/jsBaseClass.min.js --compress"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "javascript",
+    "base-class",
+    "logging",
+    "event-handling",
+    "browser-detection",
+    "utility",
+    "frontend",
+    "library",
+    "custom-events",
+    "console-logging",
+    "color-logging",
+    "javascript-library",
+    "javascript-utilities",
+    "javascript-tools",
+    "developer-tools",
+    "web-development",
+    "browser-utilities",
+    "event-driven",
+    "javascript-framework"
+  ],
+  "author": "Marcelo XP",
+  "license": "MIT",
   "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^2.0.9",
+    "gulp-replace": "^1.1.4",
+    "gulp-terser": "^2.1.0",
     "terser": "^5.37.0"
   }
 }
