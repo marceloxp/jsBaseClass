@@ -70,6 +70,18 @@ class JsBaseClass {
         this.console.log(`🍪 Cookie removed: ${name}`, options);
     }
 
+    setJsonCookie(name, value, options = {}) {
+        this.setCookie(name, JSON.stringify(value), options);
+    }
+
+    getJsonCookie(name, defaultValue = undefined) {
+        const value = this.getCookie(name, defaultValue);
+        if (value) {
+            return JSON.parse(value);
+        }
+        return defaultValue;
+    }
+
     _onDomContentLoaded() {
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof this.onDomContentLoaded === 'function') {

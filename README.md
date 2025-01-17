@@ -197,11 +197,13 @@ const app = new MyApp();
 app.init();
 ```
 
-## Cookies
+## **Cookies**
 
-The **JsBaseClass** library provides built-in methods to manage cookies using the **js-cookie** library. Below is an example of how to set, get, and remove cookies, including advanced options like `expires` and `domain`.
+The **JsBaseClass** library provides built-in methods to manage cookies using the **js-cookie** library. Below is an example of how to set, get, and remove cookies, including advanced options like `expires` and `domain`. Additionally, the library includes helper methods for working with JSON data in cookies, making it easier to store and retrieve complex objects.
 
-### Example: Managing Cookies
+---
+
+### **Example: Managing Cookies**
 
 ```javascript
 class ClassCookies extends JsBaseClass {
@@ -235,6 +237,18 @@ class ClassCookies extends JsBaseClass {
 
         const removedPreferences = this.getCookie('preferences');
         this.console.log('Preferences cookie after removal:', removedPreferences);
+
+        // Example: Set and get a JSON cookie
+        const userSettings = {
+            theme: 'dark',
+            notifications: true,
+            language: 'en',
+        };
+        this.setJsonCookie('user_settings', userSettings, { expires: 7 });
+        this.console.log('User settings cookie set as JSON.');
+
+        const retrievedSettings = this.getJsonCookie('user_settings');
+        this.console.log('Retrieved user settings:', retrievedSettings);
     }
 }
 
@@ -243,7 +257,10 @@ window.objCookies = new ClassCookies();
 objCookies.init();
 ```
 
-### Key Features:
+---
+
+### **Key Features**
+
 1. **Set a Cookie**:
    - Use `this.setCookie(name, value, options)` to set a cookie with a name, value, and optional settings like `expires`, `domain`, and `path`.
    - Example: `this.setCookie('username', 'MarceloXP', { expires: 7 })` sets a cookie that expires in 7 days.
@@ -258,7 +275,18 @@ objCookies.init();
    - Example: `this.removeCookie('username')`.
    - Example: `this.removeCookie('preferences', { domain: 'example.com', path: '/settings' })`.
 
-### Example Output in Console:
+4. **Set a JSON Cookie**:
+   - Use `this.setJsonCookie(name, value, options)` to store a JSON object as a cookie. The object is automatically serialized to a string.
+   - Example: `this.setJsonCookie('user_settings', { theme: 'dark', notifications: true }, { expires: 7 })`.
+
+5. **Get a JSON Cookie**:
+   - Use `this.getJsonCookie(name, defaultValue)` to retrieve a JSON object from a cookie. The string is automatically parsed back into an object.
+   - Example: `this.getJsonCookie('user_settings', { theme: 'light', notifications: false })`.
+
+---
+
+### **Example Output in Console**
+
 ```plaintext
 🍪 Cookie set: username = MarceloXP { expires: 7 }
 🍪 Cookie set: preferences = dark_mode { domain: 'example.com', path: '/settings' }
@@ -268,15 +296,59 @@ objCookies.init();
 🍪 Cookie removed: preferences { domain: 'example.com', path: '/settings' }
 🍪 Cookie get: username = undefined
 🍪 Cookie get: preferences = undefined
+🍪 Cookie set: user_settings = {"theme":"dark","notifications":true,"language":"en"} { expires: 7 }
+🍪 Retrieved user settings: { theme: 'dark', notifications: true, language: 'en' }
 ```
 
-### How to Use:
-1. Extend `JsBaseClass` to create your own class.
-2. Use the built-in methods `this.setCookie`, `this.getCookie`, and `this.removeCookie` to manage cookies.
-3. Use options like `expires`, `domain`, and `path` for advanced cookie management.
-4. Leverage `this.console` for structured logging and debugging.
+---
 
-For more details on cookie options, refer to the [js-cookie documentation](https://github.com/js-cookie/js-cookie#readme).
+### **How to Use**
+
+1. **Set a Cookie**:
+   ```javascript
+   this.setCookie('username', 'MarceloXP', { expires: 7 });
+   ```
+
+2. **Get a Cookie**:
+   ```javascript
+   const username = this.getCookie('username');
+   ```
+
+3. **Remove a Cookie**:
+   ```javascript
+   this.removeCookie('username');
+   ```
+
+4. **Set a JSON Cookie**:
+   ```javascript
+   const userSettings = { theme: 'dark', notifications: true };
+   this.setJsonCookie('user_settings', userSettings, { expires: 7 });
+   ```
+
+5. **Get a JSON Cookie**:
+   ```javascript
+   const settings = this.getJsonCookie('user_settings', { theme: 'light', notifications: false });
+   ```
+
+---
+
+### **Why Use JSON Cookies?**
+
+- **Store Complex Data**: JSON cookies allow you to store and retrieve complex objects, such as user preferences or settings.
+- **Automatic Serialization**: The `setJsonCookie` method automatically converts objects to strings, and `getJsonCookie` converts them back to objects.
+- **Default Values**: The `getJsonCookie` method supports a default value, which is returned if the cookie doesn’t exist.
+
+---
+
+### **Best Practices**
+
+- **Use `expires`**: Always set an expiration date for cookies to avoid them persisting indefinitely.
+- **Secure Cookies**: Use the `secure` option for cookies that should only be transmitted over HTTPS.
+- **Validate Data**: When retrieving JSON cookies, validate the data to ensure it matches the expected structure.
+
+---
+
+With these methods, you can easily manage cookies in your application, including storing and retrieving complex JSON data. For more details on cookie options, refer to the [js-cookie documentation](https://github.com/js-cookie/js-cookie#readme). 🍪🚀
 
 ---
 
