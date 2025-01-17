@@ -322,6 +322,35 @@ Here’s a basic boilerplate to get started with **JsBaseClass**:
 </html>
 ```
 
+## Using CDN
+
+To use the library with the latest version, you can use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/marceloxp/jsBaseClass@main/dist/jsBaseClass.min.js).
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsBaseClass via jsDelivr</title>
+    <script src="https://cdn.jsdelivr.net/gh/marceloxp/jsBaseClass@main/dist/jsBaseClass.min.js"></script>
+</head>
+<body>
+    <h1>JsBaseClass via jsDelivr</h1>
+    <script>
+        class MyApp extends JsBaseClass {
+            async handle() {
+                this.console.log('JsBaseClass is working via jsDelivr!');
+            }
+        }
+
+        const app = new MyApp();
+        app.init();
+    </script>
+</body>
+</html>
+```
+
 ## License
 
 **JsBaseClass** is licensed under the MIT License.
