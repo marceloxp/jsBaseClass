@@ -1,8 +1,18 @@
 # JsBaseClass
 
-![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/console.png)
+![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/jsBaseClass-v1010.png)
+
+![Version](https://img.shields.io/github/package-json/v/marceloxp/jsBaseClass)
+![License](https://img.shields.io/github/license/marceloxp/jsBaseClass)
+![Stars](https://img.shields.io/github/stars/marceloxp/jsBaseClass?style=social)
 
 **JsBaseClass** is a versatile JavaScript base class designed to simplify common tasks such as logging, event handling, and browser detection. It provides a foundation for building modular and reusable components in your JavaScript applications. The class is lightweight, extensible, and easy to integrate into any project.
+
+### 🔗 **Explore More with the Wiki**
+
+Looking for practical examples and ready-to-use snippets? Check out the [**JsBaseClass Wiki**](https://github.com/marceloxp/jsBaseClass/wiki/) for a collection of guides and snippets to supercharge your development. 🚀
+
+--- 
 
 ## Features
 
