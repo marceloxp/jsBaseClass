@@ -5,6 +5,16 @@
             "isAsync": true,
             "cmd": "cd ${workspaceRoot} && gulp",
             "event": "onFileChange"
+        },
+        {
+            "match": "package\\.json",
+            "isAsync": false,
+            "cmd": "cd ${workspaceRoot} && gulp updateStatusBar",
+            "event": "onFileChange"
         }
-    ]
+    ],
+    "statusbartext": {
+        "active": true,
+        "text": "🏷️ JsBaseClass v1.0.4"
+    }
 }

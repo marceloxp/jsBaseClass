@@ -1,9 +1,12 @@
+const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 const header = require('gulp-header');
 const replace = require('gulp-replace');
 const package = require('./package.json');
+const settingsPath = path.join(__dirname, '.vscode', 'settings.json');
 
 // Cabeçalho personalizado
 const banner = `/**
@@ -36,6 +39,20 @@ gulp.task('build', () => {
         .pipe(header(banner))               // Adiciona o cabeçalho personalizado
         .pipe(replace(/^\s*[\r\n]+/, ''))   // Remove linhas em branco no início do arquivo
         .pipe(gulp.dest('dist'));           // Salva o arquivo na pasta dist
+});
+
+gulp.task('updateStatusBar', (done) => {
+    const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+
+    const version = package.version;
+    settings.statusbartext = {
+        active: true,
+        text: `🏷️ JsBaseClass v${version}`
+    };
+
+    fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 4));
+    console.log(`Status bar updated to version v${version}`);
+    done();
 });
 
 // Tarefa padrão (executa a tarefa 'build')
