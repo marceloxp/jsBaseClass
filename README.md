@@ -1,6 +1,6 @@
 # JsBaseClass
 
-![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/jsBaseClass-v1010-v3.png)
+![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/jsBaseClass-v1010-v4.png)
 
 ![Version](https://img.shields.io/github/package-json/v/marceloxp/jsBaseClass)
 ![License](https://img.shields.io/github/license/marceloxp/jsBaseClass)
