@@ -1,6 +1,6 @@
 # JsBaseClass
 
-![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/jsBaseClass-v1010-v2.png)
+![screenshot](https://raw.githubusercontent.com/marceloxp/jsBaseClass/refs/heads/main/images/jsBaseClass-v1010-v3.png)
 
 ![Version](https://img.shields.io/github/package-json/v/marceloxp/jsBaseClass)
 ![License](https://img.shields.io/github/license/marceloxp/jsBaseClass)
@@ -8,13 +8,11 @@
 
 **JsBaseClass** is a versatile JavaScript base class designed to simplify common tasks such as logging, event handling, and browser detection. It provides a foundation for building modular and reusable components in your JavaScript applications. The class is lightweight, extensible, and easy to integrate into any project.
 
-```plaintext
 ### 🔗 **Explore More with the Wiki**
 
 Looking for practical examples and ready-to-use snippets? Check out the [**JsBaseClass Wiki**](https://github.com/marceloxp/jsBaseClass/wiki/) for a collection of guides and snippets to supercharge your development. 🚀
 
 We also provide a pre-built reference specifically designed to instruct AI systems, available at: [**AI Reference**](https://github.com/marceloxp/jsBaseClass/wiki/AI-Reference). Use it to enhance your understanding and integration of **JsBaseClass** in AI-driven projects.
-```
 
 --- 
 
