@@ -1,26 +1,27 @@
 {
-  "name": "jsbaseclass",
-  "version": "1.0.4",
-  "description": "A lightweight JavaScript base class for logging, event handling, and browser detection. Designed to simplify common tasks in frontend development.",
-  "main": "index.js",
-  "keywords": [
-    "javascript",
-    "base-class",
-    "logging",
-    "event-handling",
-    "browser-detection",
-    "utility",
-    "frontend",
-    "library"
-  ],
-  "author": "Marcelo XP",
-  "license": "MIT",
-  "devDependencies": {
-    "gulp": "^5.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-header": "^2.0.9",
-    "gulp-replace": "^1.1.4",
-    "gulp-terser": "^2.1.0",
-    "terser": "^5.37.0"
-  }
+    "name": "jsbaseclass",
+    "version": "1.0.5",
+    "description": "A lightweight JavaScript base class for logging, event handling, and browser detection. Designed to simplify common tasks in frontend development.",
+    "main": "index.js",
+    "keywords": [
+        "javascript",
+        "base-class",
+        "logging",
+        "event-handling",
+        "browser-detection",
+        "utility",
+        "frontend",
+        "library"
+    ],
+    "author": "Marcelo XP",
+    "homepage": "https://github.com/marceloxp/jsBaseClass",
+    "license": "MIT",
+    "devDependencies": {
+        "gulp": "^5.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-header": "^2.0.9",
+        "gulp-replace": "^1.1.4",
+        "gulp-terser": "^2.1.0",
+        "terser": "^5.37.0"
+    }
 }
