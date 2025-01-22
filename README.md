@@ -4,7 +4,6 @@
 
 ![Version](https://img.shields.io/github/package-json/v/marceloxp/jsBaseClass)
 ![License](https://img.shields.io/github/license/marceloxp/jsBaseClass)
-![Stars](https://img.shields.io/github/stars/marceloxp/jsBaseClass?style=social)
 
 # Table of Contents
 
@@ -18,9 +17,10 @@
 8. [Browser Detection](#browser-detection)
 9. [Cookies](#cookies)
 10. [Boilerplate for Practical Use](#boilerplate-for-practical-use)
-11. [Using CDN](#using-cdn)
-12. [License](#license)
-13. [Contributing](#contributing)
+11. [Plugin Brazil](#plugin-brazil)
+12. [Using CDN](#using-cdn)
+13. [License](#license)
+14. [Contributing](#contributing)
 
 ## Introduction
 
@@ -419,6 +419,48 @@ Here’s a basic boilerplate to get started with **JsBaseClass**:
 
         window.myApp = new MyApp();
         myApp.init();
+    </script>
+</body>
+</html>
+```
+
+### **Plugin Brazil**
+
+The **Brazil Plugin** extends the functionality of **JsBaseClass** by adding utility methods specific to Brazil, such as CPF validation. This plugin is designed to simplify common tasks related to Brazilian data formats and regulations.
+
+See more detailed information in the [Wiki](https://github.com/marceloxp/jsBaseClass/wiki/Plugin-Brazil).
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brazil Plugin Example</title>
+    <script src="path/to/jsBaseClass.min.js"></script>
+    <script src="path/to/jsBaseClassPluginBrazil.min.js"></script>
+</head>
+<body>
+    <h1>Brazil Plugin Example</h1>
+    <p>Open the browser console to see the validation results.</p>
+
+    <script>
+        class ClassBrazilValidator extends JsBaseClass {
+            async handle() {
+                const cpf = '111.111.111-11'; // Example CPF
+                const valid = this.brazil.isValidCpf(cpf);
+
+                if (valid) {
+                    this.console.success(`🚀 ${cpf} is valid`);
+                } else {
+                    this.console.error(`🚨 ${cpf} is invalid!!!`);
+                }
+            }
+        }
+
+        // Initialize the validator
+        window.objBrazilValidator = new ClassBrazilValidator();
+        objBrazilValidator.init();
     </script>
 </body>
 </html>

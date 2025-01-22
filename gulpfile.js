@@ -10,13 +10,23 @@ const settingsPath = path.join(__dirname, '.vscode', 'settings.json');
 
 // Cabeçalho personalizado
 const banner = `/**
- * JsBaseClass - A lightweight JavaScript base class for logging, event handling, and browser detection.
- * Version: ${package.version}
- * Repository: https://github.com/marceloxp/jsBaseClass
- * License: MIT
- * Author: Marcelo XP
- * Build Date: ${new Date().toISOString().split('T')[0]}
- */
+* JsBaseClass - A lightweight JavaScript base class for logging, event handling, and browser detection.
+* Version: ${package.version}
+* Repository: https://github.com/marceloxp/jsBaseClass
+* License: MIT
+* Author: Marcelo XP
+* Build Date: ${new Date().toISOString().split('T')[0]}
+*/
+`;
+
+const banner_brazil = `/**
+* JsBaseClassPluginBrazil - A JsBaseClass plugin for Brazilian validations.
+* Version: ${package.version}
+* Repository: https://github.com/marceloxp/jsBaseClass
+* License: MIT
+* Author: Marcelo XP
+* Build Date: ${new Date().toISOString().split('T')[0]}
+*/
 `;
 
 // Tarefa para build
@@ -41,6 +51,22 @@ gulp.task('build', () => {
         .pipe(gulp.dest('dist'));           // Salva o arquivo na pasta dist
 });
 
+gulp.task('build_plugin_brazil', () => {
+    return gulp
+        .src([
+            'src/plugins/brazil.js',        // Arquivo cpf.js
+        ])
+        .pipe(concat('jsBaseClassPluginBrazil.min.js')) // Concatena todos os arquivos em um único arquivo
+        .pipe(terser({
+            format: {
+                comments: false, // Remove todos os comentários, exceto os preservados
+            },
+        }))
+        .pipe(header(banner_brazil))               // Adiciona o cabeçalho personalizado
+        .pipe(replace(/^\s*[\r\n]+/, ''))   // Remove linhas em branco no início do arquivo
+        .pipe(gulp.dest('dist'));           // Salva o arquivo na pasta dist
+});
+
 gulp.task('updateStatusBar', (done) => {
     const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
 
@@ -56,4 +82,4 @@ gulp.task('updateStatusBar', (done) => {
 });
 
 // Tarefa padrão (executa a tarefa 'build')
-gulp.task('default', gulp.series('build'));
+gulp.task('default', gulp.parallel('build', 'build_plugin_brazil'));
