@@ -1,0 +1,255 @@
+# Introduction
+
+The data below is intended exclusively for feeding Artificial Intelligence (AI) systems. It provides a structured reference on the JsBaseClass library, including installation, main functionalities, usage examples, and integrations. The content is formatted in a monospaced text box to facilitate copying and use by AI tools.
+
+```plaintext
+# JsBaseClass Documentation
+
+**JsBaseClass** is a lightweight and extensible JavaScript base class designed to simplify common tasks such as logging, event handling, browser detection, and cookie management. This documentation serves as a quick reference guide for integrating and using the library in your projects.
+
+## **Installation**
+
+### **Via Script Tag**
+Include the library in your project using a script tag:
+
+<script src="path/to/jsBaseClass.min.js"></script>
+
+### **Via CDN**
+Use the latest version via jsDelivr:
+
+<script src="https://cdn.jsdelivr.net/gh/marceloxp/jsBaseClass@main/dist/jsBaseClass.min.js"></script>
+
+## **Core Features**
+
+### **1. Custom Console Logging**
+- **Methods**:
+  - `this.console.log(message)`: Standard log.
+  - `this.console.info(message)`: Informational log.
+  - `this.console.warn(message)`: Warning log.
+  - `this.console.error(message)`: Error log.
+  - `this.console.trace(message)`: Trace log.
+
+### **2. Event Handling**
+- **Methods**:
+  - `this.on(eventName, callback)`: Listen to a custom event.
+  - `this.trigger(eventName, detail)`: Trigger a custom event.
+
+#### Example:
+this.on('my-event', (event) => {
+    this.console.log('Event received:', event.detail);
+});
+
+this.trigger('my-event', { message: 'Hello, World!' });
+
+### **3. Browser Detection**
+- **Properties**:
+  - `this.browser.name`: Browser name (e.g., Chrome, Firefox).
+  - `this.browser.version`: Browser version.
+- **Helpers**:
+  - `this.is.chrome`: Check if the browser is Chrome.
+  - `this.is.firefox`: Check if the browser is Firefox.
+  - `this.is.safari`: Check if the browser is Safari.
+  - `this.is.ie`: Check if the browser is Internet Explorer.
+  - `this.is.edge`: Check if the browser is Edge.
+
+### **4. Cookie Management**
+- **Methods**:
+  - `this.setCookie(name, value, options)`: Set a cookie.
+  - `this.getCookie(name)`: Get a cookie.
+  - `this.removeCookie(name, options)`: Remove a cookie.
+  - `this.setJsonCookie(name, value, options)`: Set a JSON cookie.
+  - `this.getJsonCookie(name, defaultValue)`: Get a JSON cookie.
+
+#### Example:
+this.setCookie('username', 'MarceloXP', { expires: 7 });
+const username = this.getCookie('username');
+this.removeCookie('username');
+
+const userSettings = { theme: 'dark', notifications: true };
+this.setJsonCookie('user_settings', userSettings, { expires: 7 });
+const settings = this.getJsonCookie('user_settings');
+
+## **Extending JsBaseClass**
+
+To use `JsBaseClass`, extend it in your own class and implement the `handle` method:
+
+class MyApp extends JsBaseClass {
+    async handle() {
+        // Your initialization code here
+        this.console.log('Your code starts here...');
+    }
+
+    async onDomContentLoaded() {
+        // On DOM content loaded (page load)
+        this.console.log('DOM content loaded');
+    }
+}
+
+window.myApp = new MyApp();
+myApp.init();
+
+- **`handle` Method**: This is the main entry point for your class. It runs as soon as the class is instantiated and `init` is called. Use this method for initialization code that doesn’t depend on the DOM being fully loaded.
+- **`onDomContentLoaded` Method**: This method is automatically triggered when the `DOMContentLoaded` event fires, meaning the DOM is fully loaded and ready for manipulation. Use this method for code that depends on the DOM, such as selecting elements or binding events.
+
+## **Listen to DOM events**
+
+class MyApp extends JsBaseClass {
+    async onDomContentLoaded() {
+        // On DOM content loaded (page load)
+        document.getElementById('my-button').addEventListener('click', () => {
+            this.console.log('Button clicked!');
+        })
+    }
+}
+
+window.myApp = new MyApp();
+myApp.init();
+
+## **Axios Integration**
+
+Use Axios for HTTP requests within a class that extends `JsBaseClass`:
+
+class ClassAxios extends JsBaseClass {
+    async handle() {
+        await this.getData();
+    }
+
+    async getData() {
+        try {
+            const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+            this.console.log('Data:', response.data);
+        } catch (error) {
+            this.console.error('Error:', error.message);
+        }
+    }
+}
+
+window.objAxios = new ClassAxios();
+objAxios.init();
+
+## **Basic Usage**
+
+### **1. Minimal Example**
+
+Here’s the most basic example of using **JsBaseClass**. This example initializes the class and logs a message to the console.
+
+### **JavaScript**
+class MyApp extends JsBaseClass {
+    async handle() {
+        // Your initialization code here
+        this.console.log('Your code starts here...');
+    }
+
+    async onDomContentLoaded() {
+        // On DOM content loaded (page load)
+        this.console.log('DOM content loaded');
+    }
+}
+
+window.myApp = new MyApp();
+myApp.init();
+
+### **2. Local Class Properties**
+
+In this example, we expand the basic usage to include local class properties. These properties can be used to store data or state specific to the class instance.
+
+### **JavaScript**
+class MyApp extends JsBaseClass {
+    constructor() {
+        super();
+        // Define local properties
+        this.counter = 0;
+    }
+
+    async handle() {
+        // Access and modify local properties
+        this.console.log(`Initial Counter: ${this.counter}`);
+        this.incrementCounter();
+    }
+
+    incrementCounter() {
+        this.counter += 1;
+        this.console.log(`Counter incremented to: ${this.counter}`);
+    }
+}
+
+// Initialize the app
+window.myApp = new MyApp();
+myApp.init();
+
+### **3. Example with Instance Variables**
+
+In this example, we demonstrate how to pass an instance variable (e.g., an API key) when creating a new instance of the class. This allows you to initialize the class with specific data or configurations.
+
+### **JavaScript**
+class MyApp extends JsBaseClass {
+    constructor(apiKey) {
+        super();
+        // Store the API key as a local property
+        this.apiKey = apiKey;
+    }
+
+    async handle() {
+        // Use the API key in your initialization logic
+        this.console.log(`API Key: ${this.apiKey}`);
+
+        // Example: Make an API request using the key
+        await this.fetchData();
+    }
+
+    async fetchData() {
+        try {
+            this.console.info('Fetching data...');
+            const response = await axios.get('https://api.example.com/data', {
+                headers: {
+                    Authorization: `Bearer ${this.apiKey}`, // Use the API key in the request
+                },
+            });
+            this.console.log('Data fetched:', response.data);
+        } catch (error) {
+            this.console.error('Error fetching data:', error);
+        }
+    }
+}
+
+// Initialize the app with an API key
+window.myApp = new MyApp('your_api_key_here');
+myApp.init();
+
+## **Boilerplate**
+
+Here’s a basic boilerplate to get started:
+
+### index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsBaseClass Example</title>
+    <script src="https://cdn.jsdelivr.net/gh/marceloxp/jsBaseClass@main/dist/jsBaseClass.min.js"></script>
+</head>
+<body>
+    <h1>JsBaseClass Example</h1>
+    <script src="main.js"></script>
+</body>
+</html>
+
+### main.js:
+
+class MyApp extends JsBaseClass {
+    async handle() {
+        this.console.log('JsBaseClass is working!');
+    }
+}
+
+const app = new MyApp();
+app.init();
+
+For more detailed examples and advanced use cases, refer to the [JsBaseClass Wiki](https://github.com/marceloxp/jsBaseClass/wiki/). 🚀
+
+1 - This document serves as a foundational reference for understanding JsBaseClass;
+2 - Your task is to acknowledge that you have comprehended the core functionality and basic usage of the library;
+3 - Further instructions will be provided as needed.
+```
