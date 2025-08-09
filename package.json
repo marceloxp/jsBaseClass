@@ -1,6 +1,6 @@
 {
     "name": "jsbaseclass",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "A lightweight JavaScript base class for logging, event handling, and browser detection. Designed to simplify common tasks in frontend development.",
     "main": "dist/jsBaseClass.min.js",
     "keywords": [
